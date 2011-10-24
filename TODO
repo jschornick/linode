@@ -1,0 +1,4 @@
+The Openwrt updater makes calls to the API on every run, even if nothing has
+changed.  Consider logging last successful update to a temp file, and only poll
+API when this is missing (reboot) or differs from WAN IP.
+

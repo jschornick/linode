@@ -6,7 +6,7 @@
 
 # Notes:
 #
-# With openwrt, the real wget package must be installed
+# With Openwrt, the real wget package must be installed
 # (busybox doesn't support SSL)
 
 . $(dirname $0)/linode_dns_lib.sh
@@ -20,17 +20,15 @@ API_KEY=$(uci get ddns.linode.api_key)
 WGET="wget --no-check-certificate "
 
 DOMAIN_ID=$(DomainFind $DOMAIN)
-
 RES_ID=$(DomainResFind $DOMAIN_ID $HOSTNAME)
-
 DNS_IP=$(DomainResGet $DOMAIN_ID $RES_ID TARGET)
 
-echo $HOSTNAME.$DOMAIN: $DNS_IP
+echo Linode DNS manager entry for $HOSTNAME.$DOMAIN: $DNS_IP
 
 IFACE=$(uci get network.wan.ifname)
 WAN_IP=$(ifconfig $IFACE | awk '/inet/ {print $2}' | sed 's/addr://')
 
-echo wan IP: $WAN_IP
+echo WAN interface IP: $WAN_IP
 
 if [ "$DNS_IP" = "$WAN_IP" ]; then
   echo "Skipping update"
