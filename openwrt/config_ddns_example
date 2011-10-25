@@ -1,0 +1,8 @@
+# A modified version of this file should exist as
+#   /etc/config/ddns
+
+config 'service' 'linode'
+        option 'domain' 'mydomain.net'
+        option 'resource' 'somename'
+        option 'api_key' 'YOURAPIKEYGOESHERE'
+
