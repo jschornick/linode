@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# Copyright (c) 2011 Jeffrey Schornick
+# Copyright (c) 2011 Jeff Schornick <code@schornick.org>
 # Licensed under The MIT License
 # http://www.opensource.org/licenses/mit-license.php
 
