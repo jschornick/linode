@@ -63,7 +63,8 @@ DomainResGet()
   $DEBUG "DomainResGet( $1 $2 $3 )" >&2
   list=$(DomainResList $1 $2)
   KEY=$3
-  VAL=$(echo $list | sed -e 's/,/\n/g' | grep \"${KEY}\": | cut -d: -f2)
+  # Quick and dirty JSON parsing, works for simple structures
+  VAL=$(echo $list | sed -e 's/[,{}]/\n/g' | grep \"${KEY}\": | cut -d: -f2)
   echo $VAL | sed -e 's/^"\(.*\)\"$/\1/'
 }
 
